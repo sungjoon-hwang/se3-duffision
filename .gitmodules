@@ -1,0 +1,6 @@
+[submodule "grasp_diffusion"]
+	path = grasp_diffusion
+	url = https://github.com/sungjoon-hwang/grasp_diffusion
+[submodule "mesh_to_sdf"]
+	path = mesh_to_sdf
+	url = https://github.com/robotgradient/mesh_to_sdf
