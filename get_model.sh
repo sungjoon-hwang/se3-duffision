@@ -28,6 +28,10 @@ if [ -f "$model_path" ]; then
         echo "Directory created: $to_dir"
     fi
 
+    # metadata
+    fname="${to_dir}/model.txt"
+    echo "$latest_model" > "$fname"
+
     # Copy the latest model file to the destination directory
     cp "$model_path" "$to_dir/model.pth"
     echo "Copied $model_path to $to_dir/$latest_model"
