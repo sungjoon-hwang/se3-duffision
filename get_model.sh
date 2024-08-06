@@ -3,11 +3,12 @@
 base_dir=$(pwd)
 exp_dir=$1
 
-from_dir="${base_dir}/logs/${exp_dir}/checkpoints"
+chk_dir="${base_dir}/logs/${exp_dir}/checkpoints"
+sum_dir="${base_dir}/logs/${exp_dir}/summaries"
 to_dir="${base_dir}/data/models/${exp_dir}"
 
 # Sort filenames by the integer after "model_epoch"
-models=($(ls -1 "$from_dir"))
+models=($(ls -1 "$chk_dir"))
 sorted=($(
     for file in "${models[@]}"; do
         echo "$file"
@@ -18,7 +19,7 @@ sorted=($(
 latest_model="${sorted[-1]}"
 
 # Construct the full path to the latest model file
-model_path="${from_dir}/${latest_model}"
+model_path="${chk_dir}/${latest_model}"
 
 # Check if the latest model file exists
 if [ -f "$model_path" ]; then
@@ -26,6 +27,9 @@ if [ -f "$model_path" ]; then
         # Create the directory
         mkdir "$to_dir"
         echo "Directory created: $to_dir"
+
+        # necessary parameter to load checkpoint
+        cp "${base_dir}/data/models/params.json" "$to_dir"
     fi
 
     # metadata
