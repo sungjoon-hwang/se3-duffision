@@ -1,0 +1,2 @@
+model_epoch_1515_iter_050000.pth
+epoch: 2500, 5000, 1515

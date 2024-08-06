@@ -1,1 +1,0 @@
-model_epoch_90000_iter_1080000.pth
